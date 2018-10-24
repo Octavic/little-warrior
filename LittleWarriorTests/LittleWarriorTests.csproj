@@ -50,7 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Equipment\PatternExtensionsTests.cs" />
+    <Compile Include="Assets\Scripts\Equipment\PatternUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +58,9 @@
       <Project>{0A232E8E-292B-AA9C-5CD8-0C3145E0467C}</Project>
       <Name>LittleWarrior</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Scripts\Input\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

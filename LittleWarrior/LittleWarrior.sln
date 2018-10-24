@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleWarrior", "LittleWarrior.csproj", "{0A232E8E-292B-AA9C-5CD8-0C3145E0467C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleWarriorTests", "..\LittleWarriorTests\LittleWarriorTests.csproj", "{2CC48558-0AD0-46AA-B761-B6BEBE5E7762}"

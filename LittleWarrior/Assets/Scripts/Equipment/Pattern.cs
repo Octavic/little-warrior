@@ -8,14 +8,14 @@
     /// <summary>
     /// Describes all of the possible slices
     /// The letters maps to locations as following
-    /// --------------
+    /// </summary>
+    /// 1-----2------3
     /// |   A | E    |
     /// | B   |    F |
-    /// --------------
+    /// 4-----5------6
     /// | C   |    G |
-    /// |   E | H    |
-    /// --------------
-    /// </summary>
+    /// |   D | H    |
+    /// 7-----8------9
     public enum Pattern
     {
         A,
@@ -26,23 +26,5 @@
         F,
         G,
         H,
-    }
-
-    /// <summary>
-    /// Extends the Pattern enum
-    /// </summary>
-    public static class PatternExtensions
-    {
-        /// <summary>
-        /// Gets the opposite "slice"
-        /// </summary>
-        /// <param name="p">Pattern base class</param>
-        /// <returns>The opposite slice</returns>
-        public static Pattern GetOpposite(this Pattern p)
-        {
-            var asInt = (int)p;
-            var result = (asInt + 4) % 8;
-            return (Pattern)result;
-        }
     }
 }
