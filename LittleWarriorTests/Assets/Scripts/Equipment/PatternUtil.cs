@@ -55,12 +55,12 @@ namespace Assets.Scripts.Equipment.Tests
                 new HashSet<int>() { 7, 8, 5 },
                 new HashSet<int>() { 9, 6, 5 },
             };
-            var expects = new List<List<Pattern>>()
+            var expects = new List<Pattern>()
             {
-                new List<Pattern> { Pattern.A },
-                new List<Pattern> { Pattern.E },
-                new List<Pattern> { Pattern.D },
-                new List<Pattern> { Pattern.G },
+                Pattern.A,
+                Pattern.E,
+                Pattern.D,
+                Pattern.G
             };
 
             for (int i = 0; i < inputs.Count; i++)
@@ -69,8 +69,8 @@ namespace Assets.Scripts.Equipment.Tests
                 var expect = expects[i];
 
                 var result = PatternUtil.ParseInput(input);
-                Assert.AreEqual(result.Count, expect.Count);
-                Assert.AreEqual(result[0], expect[0]);
+                Assert.AreEqual(result.Count, 1);
+                Assert.IsTrue(result.Contains(expect));
             }
         }
 
@@ -97,6 +97,42 @@ namespace Assets.Scripts.Equipment.Tests
                 var input = inputs[i];
                 var result = PatternUtil.ParseInput(input);
                 Assert.AreEqual(result.Count, 0);
+            }
+        }
+
+        /// 1-----2------3
+        /// |   A | E    |
+        /// | B   |    F |
+        /// 4-----5------6
+        /// | C   |    G |
+        /// |   D | H    |
+        /// 7-----8------9
+        [TestMethod()]
+        public void ParseInputTest_MultiplePieces()
+        {
+            var inputs = new List<HashSet<int>>()
+            {
+                new HashSet<int>() { 1, 2, 3, 5 },
+                new HashSet<int>() { 1, 2, 4, 5 },
+                new HashSet<int>() { 1, 2, 5, 8, 9 },
+                new HashSet<int>() { 1, 2, 6, 7, 5 },
+            };
+            var expects = new List<List<Pattern>>()
+            {
+                new List<Pattern> { Pattern.A, Pattern.E },
+                new List<Pattern> { Pattern.A, Pattern.B },
+                new List<Pattern> { Pattern.A, Pattern.H },
+                new List<Pattern> { Pattern.A },
+            };
+
+            for (int i = 0; i < inputs.Count; i++)
+            {
+                var input = inputs[i];
+                var expect = expects[i];
+
+                var result = PatternUtil.ParseInput(input);
+                Assert.AreEqual(result.Count, expect.Count);
+                Assert.IsTrue(expect.All(item => result.Contains(item)));
             }
         }
     }

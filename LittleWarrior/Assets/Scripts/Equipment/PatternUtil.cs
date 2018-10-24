@@ -17,7 +17,9 @@
     /// 7-----8------9
     public static class PatternUtil
     {
-
+        /// <summary>
+        /// A map of pattern => required edge nodes (aside from 5 which is always required)
+        /// </summary>
         private static Dictionary<Pattern, List<int>> Requirements = new Dictionary<Pattern, List<int>>()
         {
             {Pattern.A, new List<int>() { 2, 1 } },
@@ -48,14 +50,14 @@
         /// </summary>
         /// <param name="touchedNodes">List of touched nodes</param>
         /// <returns>Fulfilled patterns</returns>
-        public static IList<Pattern> ParseInput(HashSet<int> touchedNodes)
+        public static HashSet<Pattern> ParseInput(HashSet<int> touchedNodes)
         {
             if (!touchedNodes.Contains(5))
             {
-                return new List<Pattern>();
+                return new HashSet<Pattern>();
             }
 
-            return Requirements.Keys.Where(pattern => Requirements[pattern].All(touchedNodes.Contains)).ToList();
+            return new HashSet<Pattern>(Requirements.Keys.Where(pattern => Requirements[pattern].All(touchedNodes.Contains)));
         }
     }
 }
