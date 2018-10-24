@@ -1,3 +1,7 @@
 .meta
 /LittleWarrior/Library
 /LittleWarrior/Temp
+/LittleWarrior/.vs/
+/LittleWarriorTests/Properties
+/LittleWarriorTests/bin
+/LittleWarriorTests/obj
