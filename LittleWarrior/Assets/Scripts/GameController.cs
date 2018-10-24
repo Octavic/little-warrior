@@ -7,31 +7,23 @@
     using UnityEngine;
     using Input;
 
+    /// <summary>
+    /// Controls the overall flow of the game
+    /// </summary>
     public class GameController : MonoBehaviour
     {
         public static GameController CurrentInstance
         {
             get
             {
-                if(!_currentInstance)
+                if(!currentInstance)
                 {
-                    _currentInstance = GameObject.FindObjectOfType<GameController>();
+                    currentInstance = GameObject.FindObjectOfType<GameController>();
                 }
 
-                return _currentInstance;
+                return currentInstance;
             }
         }
-        private static GameController _currentInstance;
-        public void ExecuteInput(HashSet<int> touchedNodes)
-        {
-            var patterns = PatternUtil.ParseInput(touchedNodes);
-            var str = "Executed pattern: ";
-            foreach(var p in patterns)
-            {
-                str += p.ToString();
-                str += ',';
-            }
-            Debug.Log(str);
-        }
+        private static GameController currentInstance;
     }
 }

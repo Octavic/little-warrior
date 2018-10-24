@@ -11,7 +11,10 @@
     /// </summary>
     public class KeyboardController : BaseController
     {
-        private Dictionary<KeyCode, int> KeyMap = new Dictionary<KeyCode, int>()
+        /// <summary>
+        /// A map of keyboard keycode to the node that it'll hit
+        /// </summary>
+        private Dictionary<KeyCode, int> keycodeToNodeMap = new Dictionary<KeyCode, int>()
         {
             { KeyCode.Q, 1 },
             { KeyCode.W, 2 },
@@ -31,11 +34,11 @@
                 this.FinishTouch();
             }
 
-            foreach (var key in this.KeyMap.Keys)
+            foreach (var key in this.keycodeToNodeMap.Keys)
             {
                 if (Input.GetKeyDown(key))
                 {
-                    this.AddNode(this.KeyMap[key]);
+                    this.AddNode(this.keycodeToNodeMap[key]);
                 }
             }
 

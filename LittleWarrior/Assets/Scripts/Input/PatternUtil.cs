@@ -20,7 +20,7 @@
         /// <summary>
         /// A map of pattern => required edge nodes (aside from 5 which is always required)
         /// </summary>
-        private static Dictionary<Pattern, List<int>> Requirements = new Dictionary<Pattern, List<int>>()
+        private static Dictionary<Pattern, List<int>> patternRequirements = new Dictionary<Pattern, List<int>>()
         {
             {Pattern.A, new List<int>() { 2, 1 } },
             {Pattern.B, new List<int>() { 1, 4 } },
@@ -57,7 +57,7 @@
                 return new HashSet<Pattern>();
             }
 
-            return new HashSet<Pattern>(Requirements.Keys.Where(pattern => Requirements[pattern].All(touchedNodes.Contains)));
+            return new HashSet<Pattern>(patternRequirements.Keys.Where(pattern => patternRequirements[pattern].All(touchedNodes.Contains)));
         }
     }
 }

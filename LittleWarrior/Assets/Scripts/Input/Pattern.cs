@@ -1,10 +1,5 @@
 ﻿namespace Assets.Scripts.Input
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// Describes all of the possible slices
     /// The letters maps to locations as following

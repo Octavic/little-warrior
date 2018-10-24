@@ -6,8 +6,16 @@
     using System.Text;
     using UnityEngine;
 
+    /// <summary>
+    /// The base class for controller
+    /// </summary>
     public abstract class BaseController : MonoBehaviour
     {
+        /// <summary>
+        /// The player that's using this controller
+        /// </summary>
+        public PlayerController TargetPlayer;
+
         /// <summary>
         /// All of the nodes that's currently touched
         /// </summary>
@@ -35,7 +43,7 @@
         /// </summary>
         public void FinishTouch()
         {
-            GameController.CurrentInstance.ExecuteInput(this.TouchedNodes);
+            this.TargetPlayer.ExecuteInput(this.TouchedNodes);
             this.TouchedNodes = null;
         }
 
