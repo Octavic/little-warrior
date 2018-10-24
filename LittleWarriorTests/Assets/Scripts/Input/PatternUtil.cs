@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Assets.Scripts.Equipment;
+using Assets.Scripts.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;

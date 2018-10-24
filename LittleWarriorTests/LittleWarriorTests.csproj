@@ -50,7 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Equipment\PatternUtil.cs" />
+    <Compile Include="Assets\Scripts\Input\PatternUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

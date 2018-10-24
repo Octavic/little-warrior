@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Equipment
+﻿namespace Assets.Scripts.Input
 {
     using System;
     using System.Collections.Generic;
