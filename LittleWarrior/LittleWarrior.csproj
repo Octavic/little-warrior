@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -82,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Equipment\BaseEquipment.cs" />
+    <Compile Include="Assets\Scripts\Equipment\BaseWeapon.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Input\BaseController.cs" />
     <Compile Include="Assets\Scripts\Input\KeyboardController.cs" />
@@ -91,6 +94,8 @@
     <Compile Include="Assets\Scripts\Resource\Pizza.cs" />
     <Compile Include="Assets\Scripts\Resource\PizzaSlice.cs" />
     <Compile Include="Assets\Scripts\Resource\Topping.cs" />
+    <Compile Include="Assets\Scripts\UI\PizzaSliceUI.cs" />
+    <Compile Include="Assets\Scripts\UI\PizzaUI.cs" />
     <Compile Include="Assets\Scripts\Utils\GlobalRandom.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -27,11 +27,6 @@
         /// <param name="node">Target node</param>
         public void AddNode(int node)
         {
-            if(this.TouchedNodes == null)
-            {
-                this.TouchedNodes = new HashSet<int>();
-            }
-
             this.TouchedNodes.Add(node);
         }
 
@@ -44,7 +39,7 @@
         public void FinishTouch()
         {
             this.TargetPlayer.ExecuteInput(this.TouchedNodes);
-            this.TouchedNodes = null;
+            this.TouchedNodes = new HashSet<int>();
         }
 
         /// <summary>
@@ -52,6 +47,7 @@
         /// </summary>
         protected virtual void Start()
         {
+            this.TouchedNodes = new HashSet<int>();
         }
 
         /// <summary>

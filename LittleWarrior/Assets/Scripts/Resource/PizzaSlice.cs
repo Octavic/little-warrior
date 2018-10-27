@@ -43,9 +43,16 @@
         /// Bakes the slice
         /// </summary>
         /// <param name="timePassed">How much time has passed</param>
-        public void Bake(float timePassed)
+        /// <returns>True if the slice was finished just now</returns>
+        public bool Bake(float timePassed)
         {
+            if(this.IsReady)
+            {
+                return false;
+            }
+
             this.BakeTimeLeft = Math.Max(this.BakeTimeLeft - timePassed, 0);
+            return this.IsReady;
         }
     }
 }

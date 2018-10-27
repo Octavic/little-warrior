@@ -6,6 +6,7 @@
     using System.Text;
     using Input;
     using UnityEngine;
+    using UI;
 
     /// <summary>
     /// Defines the whole pizza
@@ -28,12 +29,17 @@
         private List<float> BakeTimes;
 
         /// <summary>
+        /// The pizza UI
+        /// </summary>
+        private PizzaUI UI;
+
+        /// <summary>
         /// Creates a new instance of the <see cref="Pizza"/> class
         /// </summary>
         /// <param name="bakeTimes"></param>
-        public Pizza(List<float> bakeTimes)
+        public Pizza(List<float> bakeTimes, PizzaUI ui = null)
         {
-            if(bakeTimes.Count != SliceCount)
+            if (bakeTimes.Count != SliceCount)
             {
                 Debug.LogError("Mismatching bake time count with pizza slices");
                 throw new ArgumentException();
@@ -41,10 +47,13 @@
 
             this.BakeTimes = bakeTimes;
             this.Slices = new List<PizzaSlice>();
-            for(int i = 0; i < SliceCount; i++)
+            for (int i = 0; i < SliceCount; i++)
             {
                 this.Slices.Add(new PizzaSlice(bakeTimes[i]));
             }
+
+            this.UI = ui;
+            this.UpdateUI();
         }
 
         /// <summary>
@@ -53,10 +62,12 @@
         /// <param name="topping">Target topping to be added</param>
         public void ApplyTopping(Topping topping)
         {
-            foreach(var slice in this.Slices)
+            foreach (var slice in this.Slices)
             {
                 slice.Toppings.Add(topping);
             }
+
+            this.UpdateUI();
         }
 
         /// <summary>
@@ -65,9 +76,15 @@
         /// <param name="timePassed">How much time to bake for</param>
         public void Bake(float timePassed)
         {
-            foreach(var slice in this.Slices)
+            var changed = false;
+            foreach (var slice in this.Slices)
             {
-                slice.Bake(timePassed);
+                changed = slice.Bake(timePassed) || changed;
+            }
+
+            if (changed)
+            {
+                this.UpdateUI();
             }
         }
 
@@ -83,14 +100,30 @@
             {
                 var index = (int)pattern;
                 var targetSlice = this.Slices[index];
-                if(targetSlice.IsReady)
+                if (targetSlice.IsReady)
                 {
                     result.Add(targetSlice);
                     this.Slices[index] = new PizzaSlice(this.BakeTimes[index]);
                 }
             }
 
+            if (result.Count > 0)
+            {
+                this.UpdateUI();
+            }
+
             return result;
+        }
+
+        /// <summary>
+        /// Re-render the UI
+        /// </summary>
+        private void UpdateUI()
+        {
+            if (this.UI != null)
+            {
+                this.UI.RenderPizza(this);
+            }
         }
     }
 }

@@ -19,9 +19,14 @@
         public List<Pattern> Patterns { get; protected set; }
 
         /// <summary>
-        /// Executes the attack 
+        /// How long it'll take for the item to be available again
         /// </summary>
-        /// <param name="consumedSlices">The slices that's executed for the attack</param>
+        public float Cooldown;
+
+        /// <summary>
+        /// Executes the attack with the given slices
+        /// </summary>
+        /// <param name="consumedSlices">The slices that's consumed for the attack</param>
         protected abstract void ExecuteAttack(List<PizzaSlice> consumedSlices);
     }
 }

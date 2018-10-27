@@ -127,7 +127,7 @@ namespace Assets.Scripts.Resource.Tests
             consumeResult = pizza.ConsumeSlices(new HashSet<Pattern>() { Pattern.A});
             Assert.AreEqual(consumeResult.Count, 1);
             Assert.AreEqual(consumeResult[0].Toppings.Count, 0);
-            // Consume H. Should have toppings
+            // Consume H. Should have toppings (even though it's being baked when the topping was added)
             consumeResult = pizza.ConsumeSlices(new HashSet<Pattern>() { Pattern.H });
             Assert.AreEqual(consumeResult.Count, 1);
             this.ValidateSlices(consumeResult, Topping.Pepperoni);
