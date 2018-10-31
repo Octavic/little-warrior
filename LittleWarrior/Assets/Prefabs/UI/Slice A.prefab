@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 224692421687301148}
   - component: {fileID: 222233594959308912}
   - component: {fileID: 114771356510252842}
+  - component: {fileID: 114429628860673684}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -128,7 +129,7 @@ MonoBehaviour:
   - {fileID: 114849550074167132}
   - {fileID: 114994715689046662}
   - {fileID: 114347711700236410}
-  CooldownText: {fileID: 114771356510252842}
+  CooldownText: {fileID: 114429628860673684}
 --- !u!114 &114347711700236410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,6 +157,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114429628860673684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1470904950181592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92de5a82d66d9574d882701c9ade9074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114649977140230052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,9 +227,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1.1
-
-    w'
+  m_Text: 1.1
 --- !u!114 &114849550074167132
 MonoBehaviour:
   m_ObjectHideFlags: 1

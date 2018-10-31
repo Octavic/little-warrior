@@ -14,11 +14,6 @@
     public class Pizza
     {
         /// <summary>
-        /// Number of slices in a pizza
-        /// </summary>
-        public const int SliceCount = 8;
-
-        /// <summary>
         /// The current slices
         /// </summary>
         public List<PizzaSlice> Slices;
@@ -39,7 +34,7 @@
         /// <param name="bakeTimes"></param>
         public Pizza(List<float> bakeTimes, PizzaUI ui = null)
         {
-            if (bakeTimes.Count != SliceCount)
+            if (bakeTimes.Count != Settings.SliceCount)
             {
                 Debug.LogError("Mismatching bake time count with pizza slices");
                 throw new ArgumentException();
@@ -47,7 +42,7 @@
 
             this.BakeTimes = bakeTimes;
             this.Slices = new List<PizzaSlice>();
-            for (int i = 0; i < SliceCount; i++)
+            for (int i = 0; i < Settings.SliceCount; i++)
             {
                 this.Slices.Add(new PizzaSlice(bakeTimes[i]));
             }

@@ -94,6 +94,8 @@
     <Compile Include="Assets\Scripts\Resource\Pizza.cs" />
     <Compile Include="Assets\Scripts\Resource\PizzaSlice.cs" />
     <Compile Include="Assets\Scripts\Resource\Topping.cs" />
+    <Compile Include="Assets\Scripts\Settings.cs" />
+    <Compile Include="Assets\Scripts\UI\PizzaSliceCooldown.cs" />
     <Compile Include="Assets\Scripts\UI\PizzaSliceUI.cs" />
     <Compile Include="Assets\Scripts\UI\PizzaUI.cs" />
     <Compile Include="Assets\Scripts\Utils\GlobalRandom.cs" />

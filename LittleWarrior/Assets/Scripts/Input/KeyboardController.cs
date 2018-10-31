@@ -29,7 +29,7 @@
 
         protected override void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.J))
             {
                 this.FinishTouch();
             }

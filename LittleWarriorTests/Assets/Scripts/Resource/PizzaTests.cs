@@ -112,32 +112,43 @@ namespace Assets.Scripts.Resource.Tests
 
             // Add some toppings
             pizza.ApplyTopping(Topping.Pepperoni);
+            var toppingState = new List<int>() { 1, 1, 1, 1, 1, 1, 1, 1 };
+            this.ValidatePizza(pizza, currentState, toppingState);
             // Consume the pizza
             consumeResult = pizza.ConsumeSlices(new HashSet<Pattern>() { Pattern.A, Pattern.B });
             Assert.AreEqual(consumeResult.Count, 2);
             currentState = new List<float>() { 1, 1, 0, 0, 0, 1, 1, 1 };
-            this.ValidatePizza(pizza, currentState);
+            toppingState = new List<int>() { 0, 0, 1, 1, 1, 1, 1, 1 };
+            this.ValidatePizza(pizza, currentState, toppingState);
             this.ValidateSlices(consumeResult, Topping.Pepperoni);
 
             // Bake some more
             pizza.Bake(1);
             currentState = new List<float>() { 0, 0, 0, 0, 0, 0, 0, 0 };
-            this.ValidatePizza(pizza, currentState);
+            this.ValidatePizza(pizza, currentState, toppingState);
             // Consume A again. Should be plain
             consumeResult = pizza.ConsumeSlices(new HashSet<Pattern>() { Pattern.A});
             Assert.AreEqual(consumeResult.Count, 1);
             Assert.AreEqual(consumeResult[0].Toppings.Count, 0);
             // Consume H. Should have toppings (even though it's being baked when the topping was added)
             consumeResult = pizza.ConsumeSlices(new HashSet<Pattern>() { Pattern.H });
+            currentState = new List<float>() { 1, 0, 0, 0, 0, 0, 0, 2 };
+            toppingState = new List<int>() { 0, 0, 1, 1, 1, 1, 1, 0 };
             Assert.AreEqual(consumeResult.Count, 1);
+            this.ValidatePizza(pizza, currentState, toppingState);
             this.ValidateSlices(consumeResult, Topping.Pepperoni);
         }
-        private void ValidatePizza(Pizza pizza, List<float> expectedTimeLeft)
+        private void ValidatePizza(Pizza pizza, List<float> expectedTimeLeft, List<int> expectedToppingCount = null)
         {
-            for (int i = 0; i < Pizza.SliceCount; i++)
+            for (int i = 0; i < Settings.SliceCount; i++)
             {
                 var slice = pizza.Slices[i];
                 Assert.AreEqual(slice.BakeTimeLeft, expectedTimeLeft[i]);
+
+                if(expectedToppingCount != null)
+                {
+                    Assert.AreEqual(slice.Toppings.Count, expectedToppingCount[i]);
+                }
             }
         }
         private void ValidateSlices(List<PizzaSlice> slices, Topping topping)

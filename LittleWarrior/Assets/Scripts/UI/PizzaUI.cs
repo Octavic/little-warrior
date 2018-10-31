@@ -16,7 +16,7 @@
         /// <summary>
         /// A list of all slices
         /// </summary>
-        private List<PizzaSliceUI> Slices;
+        private List<PizzaSliceUI> SliceUIs;
 
         /// <summary>
         /// Updates the pizza UI with the given pizza
@@ -24,9 +24,9 @@
         /// <param name="pizza">The new pizza</param>
         public void RenderPizza(Pizza pizza)
         {
-            for(int i = 0; i < 8; i++)
+            for (int i = 0; i < Settings.SliceCount; i++)
             {
-                this.Slices[i].RenderSlice(pizza.Slices[i]);
+                this.SliceUIs[i].RenderSlice(pizza.Slices[i]);
             }
         }
 
@@ -35,8 +35,8 @@
         /// </summary>
         protected void Start()
         {
-            this.Slices = this.GetComponentsInChildren<PizzaSliceUI>().ToList();
-            if(this.Slices.Count != 8)
+            this.SliceUIs = this.GetComponentsInChildren<PizzaSliceUI>().OrderBy(ui => ui.gameObject.name).ToList();
+            if (this.SliceUIs.Count != Settings.SliceCount)
             {
                 Debug.LogError("Mismatching pizza slice UI count");
             }

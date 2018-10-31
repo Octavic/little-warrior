@@ -21,6 +21,9 @@
         /// </summary>
         public float BakeTimeLeft;
 
+        /// <summary>
+        /// If the pizza slice is ready
+        /// </summary>
         public bool IsReady
         {
             get
@@ -33,10 +36,10 @@
         /// Creates a new instance of the <see cref="PizzaSlice"/> class 
         /// </summary>
         /// <param name="bakeTimeLeft">How much time is left when baking</param>
-        public PizzaSlice(float bakeTimeLeft)
+        public PizzaSlice(float totalBakeTime)
         {
             this.Toppings = new HashSet<Topping>();
-            this.BakeTimeLeft = bakeTimeLeft;
+            this.BakeTimeLeft = totalBakeTime;
         }
 
         /// <summary>

@@ -12,23 +12,24 @@
     {
         public Image PizzaBase;
         public List<Image> Toppings;
-        public Text CooldownText;
+        public PizzaSliceCooldown CooldownText;
 
+        /// <summary>
+        /// Renders the target slice
+        /// </summary>
+        /// <param name="targetSlice">Target slice</param>
         public void RenderSlice(PizzaSlice targetSlice)
         {
             for (int i = 0; i < this.Toppings.Count; i++)
             {
-
                 this.Toppings[i].gameObject.SetActive(targetSlice.Toppings.Contains((Topping)i));
             }
 
             this.PizzaBase.gameObject.SetActive(targetSlice.IsReady);
-            this.CooldownText.gameObject.SetActive(!targetSlice.IsReady);
 
-            if (targetSlice.BakeTimeLeft > 0)
+            if(!targetSlice.IsReady)
             {
-                this.CooldownText.gameObject.SetActive(true);
-                this.CooldownText.text = targetSlice.BakeTimeLeft.ToString("0.0");
+                this.CooldownText.WatchSlice(targetSlice);
             }
         }
     }
